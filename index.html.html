@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarFinder Pro Catalog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="title">
+            <h1>CarFinder Pro</h1>
+            <p class="subtitle">Discover your perfect car</p>
+        </div>
+        <div class="controls">
+            <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+            <span id="favorites-count" class="badge" title="Favorites">❤️ 0</span>
+            <span id="compare-count" class="badge" title="Compare">⚖️ 0</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- Filter Section -->
+        <section class="filters">
+            <div class="filter-group search-group">
+                <label for="search">Search</label>
+                <input type="text" id="search" placeholder="Search by brand, model or description...">
+            </div>
+            <div class="filter-group range-group">
+                <label>Price (€)</label>
+                <div class="range-inputs">
+                    <input type="number" id="price-min" placeholder="Min" min="0">
+                    <input type="number" id="price-max" placeholder="Max" min="0">
+                </div>
+            </div>
+            <div class="filter-group range-group">
+                <label>Year</label>
+                <div class="range-inputs">
+                    <input type="number" id="year-min" placeholder="Min" min="1900">
+                    <input type="number" id="year-max" placeholder="Max" min="1900">
+                </div>
+            </div>
+            <div class="filter-group range-group">
+                <label>Kilometres</label>
+                <div class="range-inputs">
+                    <input type="number" id="km-min" placeholder="Min" min="0">
+                    <input type="number" id="km-max" placeholder="Max" min="0">
+                </div>
+            </div>
+            <div class="filter-group range-group">
+                <label>Power (CV)</label>
+                <div class="range-inputs">
+                    <input type="number" id="power-min" placeholder="Min" min="0">
+                    <input type="number" id="power-max" placeholder="Max" min="0">
+                </div>
+            </div>
+            <!-- Multi-check groups -->
+            <div class="filter-group checkbox-group">
+                <span class="group-title">Fuel</span>
+                <div id="fuel-options" class="options"></div>
+            </div>
+            <div class="filter-group checkbox-group">
+                <span class="group-title">Transmission</span>
+                <div id="transmission-options" class="options"></div>
+            </div>
+            <div class="filter-group checkbox-group">
+                <span class="group-title">Eco Label</span>
+                <div id="label-options" class="options"></div>
+            </div>
+            <div class="filter-group checkbox-group">
+                <span class="group-title">Body</span>
+                <div id="body-options" class="options"></div>
+            </div>
+            <div class="filter-group sort-group">
+                <label for="sort-select">Sort by</label>
+                <select id="sort-select">
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="year-desc">Year: Newest First</option>
+                    <option value="year-asc">Year: Oldest First</option>
+                    <option value="km-asc">Kilometres: Low to High</option>
+                    <option value="km-desc">Kilometres: High to Low</option>
+                    <option value="power-asc">Power: Low to High</option>
+                    <option value="power-desc">Power: High to Low</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Car List -->
+        <section id="car-list" class="car-list"></section>
+    </main>
+
+    <!-- Detail Modal -->
+    <div id="detail-modal" class="modal hidden" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" id="detail-close" aria-label="Close">✖️</button>
+            <div id="detail-gallery" class="gallery"></div>
+            <h2 id="detail-title"></h2>
+            <p id="detail-description"></p>
+            <table id="detail-specs" class="spec-table"></table>
+            <div class="detail-actions">
+                <button id="add-favorite">Add to favorites ❤️</button>
+                <button id="add-compare">Add to compare ⚖️</button>
+                <button id="contact-seller">Contact seller 📞</button>
+            </div>
+            <div id="recently-viewed" class="recently-viewed"></div>
+        </div>
+    </div>
+
+    <!-- Compare Modal -->
+    <div id="compare-modal" class="modal hidden" aria-hidden="true">
+        <div class="modal-content large">
+            <button class="modal-close" id="compare-close" aria-label="Close">✖️</button>
+            <h2>Compare Cars</h2>
+            <div id="compare-table-container"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
